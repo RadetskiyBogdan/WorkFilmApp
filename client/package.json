@@ -27,13 +27,20 @@
     "start": "PORT=8000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "cd .. && husky install client/.husky"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx pretty-quick --staged ng lint ng test",
+      "pre-push": "ng build --aot true"
+    }
   },
   "browserslist": {
     "production": [
@@ -48,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "husky": "^7.0.4",
     "prettier": "^2.5.1",
     "pretty-quick": "^3.1.3"
   }
